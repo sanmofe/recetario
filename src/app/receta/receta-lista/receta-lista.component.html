@@ -1,0 +1,42 @@
+<app-encabezado></app-encabezado>
+<div class="row">
+  <div class="col col-6">
+    <div class="card" style="width: 100%;">
+      <div class="card-header">
+        Mis recetas <button type="button" class="btn btn-warning" (click)="crearReceta()"><i class="bi bi-plus-circle"></i></button>
+      </div>
+      <table class="table" border="1">
+        <thead>
+          <th>Nombre</th>
+          <th>Horas preparación</th>
+          <th># personas</th>
+          <th>Calorías/Porción</th>
+          <th>Acciones</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let receta of recetas">
+            <td>{{receta.nombre}}</td>
+            <td style="text-align: center;">{{receta.duracion | number:'1.1-1'}}</td>
+            <td style="text-align: center;">{{receta.porcion | number:'1.0-0'}}</td>
+            <td style="text-align: center;">{{caloriasPorcion(receta) | number:'1.2-2'}}</td>
+            <td>
+              <button [disabled]="false" type="button" class="btn btn-primary" (click)="editarReceta(receta.id)"><i class="bi bi-pencil"></i></button>&nbsp;
+              <button [disabled]="false" type="button" class="btn btn-danger" (click)="borrarReceta(receta.id)"><i class="bi bi-trash"></i></button>&nbsp;
+              <button [disabled]="false" type="button" class="btn btn-warning" (click)="prepararReceta(receta)"><i class="bi bi-fire"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      </div>
+  <div class="col col-6">
+    <div class="card" style="width: 100%;" *ngIf="recetaElegida">
+      <div class="card-header">
+        <h5 class="card-title">Preparar {{recetaElegida.nombre}}</h5>
+      </div>
+      <p class="card-text">
+        <app-receta-detalle [recetaDetalle]="recetaElegida"></app-receta-detalle>
+      </p>
+    </div>
+  </div>
+</div>
