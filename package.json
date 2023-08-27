@@ -2,11 +2,15 @@
   "name": "proyecto-frontend",
   "version": "0.0.0",
   "scripts": {
+    "add-hooks": "scripts/add-hooks.sh",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "preinstall": "npm install -g @angular/cli @angular/compiler-cli typescript",
+    "postinstall": "ng build --configuration production"
   },
   "private": true,
   "dependencies": {
@@ -39,5 +43,10 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.8.2"
+  },
+  "engines": {
+    "node": "14.20",
+      "npm": "9.4.1"
   }
+  
 }
