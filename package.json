@@ -1,6 +1,10 @@
 {
   "name": "proyecto-frontend",
   "version": "0.0.0",
+  "engines": {
+    "node": "14.20",
+      "npm": "9.4.1"
+  },
   "scripts": {
     "add-hooks": "scripts/add-hooks.sh",
     "ng": "ng",
@@ -43,10 +47,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.8.2"
-  },
-  "engines": {
-    "node": "14.20",
-      "npm": "9.4.1"
   }
+
   
 }
