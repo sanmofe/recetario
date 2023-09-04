@@ -55,6 +55,9 @@ export class RestauranteCrearComponent implements OnInit {
       else if (error.statusText === "UNPROCESSABLE ENTITY") {
         this.toastr.error("Error","No hemos podido identificarlo, por favor vuelva a iniciar sesión.")
       }
+      else if (error.status === 404) {
+        this.toastr.error("Error","El nombre del restaurante ya existe, por favor ingrese otro nombre.")
+      }
       else {
         this.toastr.error("Error","Ha ocurrido un error. " + error.message)
       }
