@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../../environments/environment'
 
 @Component({
   selector: 'app-encabezado',
@@ -8,10 +6,8 @@ import { environment } from '../../../environments/environment'
   styleUrls: ['./encabezado.component.css']
 })
 export class EncabezadoComponent implements OnInit {
-  private apiUrl = environment.apiUrl;
-  user_type: string;
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   ngOnInit() {
     const headers = new HttpHeaders({
@@ -22,8 +18,6 @@ export class EncabezadoComponent implements OnInit {
 
       this.user_type = data.user_type;
     });
-
-
   }
 
 }
