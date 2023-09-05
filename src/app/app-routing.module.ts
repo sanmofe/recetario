@@ -6,6 +6,7 @@ import { RecetaListaComponent } from './receta/receta-lista/receta-lista.compone
 import { RecetaCrearComponent } from './receta/receta-crear/receta-crear.component';
 import { RecetaEditarComponent } from './receta/receta-editar/receta-editar.component';
 
+// HU: REC-4 y REC-6
 import { RestauranteListaComponent } from './restaurante/restaurante-lista/restaurante-lista.component';
 import { RestauranteCrearComponent } from './restaurante/restaurante-crear/restaurante-crear.component';
 import { RestauranteEditarComponent } from './restaurante/restaurante-editar/restaurante-editar.component';

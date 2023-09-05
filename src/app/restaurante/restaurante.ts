@@ -1,3 +1,4 @@
+// HU: REC-4 y REC-6
 
 export class Restaurante {
     id: number;
