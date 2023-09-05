@@ -18,13 +18,10 @@ export class EncabezadoComponent implements OnInit {
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     })
         
-    // Realiza una solicitud al backend para obtener el tipo de usuario
     this.http.get<{ user_type: string }>(`${this.apiUrl}/api/user-type`, { headers: headers }).subscribe(data => {
 
       this.user_type = data.user_type;
-      //headers: headers;
     });
-    //return this.http.get<{ user_type: string }>(`${this.userType}/recetas/`, { headers: headers })
 
 
   }
