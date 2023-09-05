@@ -11,6 +11,7 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { RecetaModule } from './receta/receta.module';
 import { IngredienteModule } from './ingrediente/ingrediente.module';
 import { RecetaIngredienteModule } from './receta-ingrediente/receta-ingrediente.module';
+import { ChefModule } from './chef/chef.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { RecetaIngredienteModule } from './receta-ingrediente/receta-ingrediente
     RecetaModule,
     IngredienteModule,
     RecetaIngredienteModule,
+    ChefModule,
     ToastrModule.forRoot({
       timeOut: 7000,
       positionClass: 'toast-bottom-right',
