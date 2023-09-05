@@ -10,6 +10,14 @@ export class EncabezadoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+    })
+        
+    this.http.get<{ user_type: string }>(`${this.apiUrl}/api/user-type`, { headers: headers }).subscribe(data => {
+
+      this.user_type = data.user_type;
+    });
   }
 
 }
