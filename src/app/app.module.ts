@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsuarioModule } from './usuario/usuario.module';
 import { RecetaModule } from './receta/receta.module';
+// HU: REC-4 y REC-6
+import { RestauranteModule } from './restaurante/restaurante.module';
 import { IngredienteModule } from './ingrediente/ingrediente.module';
 import { RecetaIngredienteModule } from './receta-ingrediente/receta-ingrediente.module';
 import { ChefModule } from './chef/chef.module';
@@ -25,6 +27,7 @@ import { ChefModule } from './chef/chef.module';
     ReactiveFormsModule,
     UsuarioModule,
     RecetaModule,
+    RestauranteModule,
     IngredienteModule,
     RecetaIngredienteModule,
     ChefModule,
