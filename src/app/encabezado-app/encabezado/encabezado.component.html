@@ -7,14 +7,14 @@
   <div class="collapse navbar-collapse" id="opciones">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="/restaurantes">Restaurantes</a>
+        <a class="nav-link" href="/restaurantes"*ngIf="user_type==='ADMIN'">Restaurantes</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/recetas">Recetas</a>
       </li>
       <!-- HU: REC-4 -->
       <li class="nav-item">
-        <a class="nav-link" href="/ingredientes"*ngIf="user_type==='CHEF'">Ingredientes</a> 
+        <a class="nav-link" href="/ingredientes">Ingredientes</a> 
       </li>
       
       <li class="nav-item">
