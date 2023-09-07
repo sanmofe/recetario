@@ -11,6 +11,7 @@ import { ChefService } from '../chef.service';
 export class ChefListaComponent implements OnInit  {
 
   chefs = []
+  idRestaurante = parseInt(this.router.snapshot.params['id']);
 
   constructor(
     private routerPath: Router,
@@ -20,7 +21,7 @@ export class ChefListaComponent implements OnInit  {
   ){}
 
   ngOnInit(): void {
-    this.chef$.darChefs().subscribe((chefs) => {
+    this.chef$.darChefsRestaurante(this.idRestaurante).subscribe((chefs) => {
       this.chefs = chefs;
     })
   }

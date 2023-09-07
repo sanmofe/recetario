@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ChefService } from '../chef.service';
+import {Location} from '@angular/common';
+
 @Component({
   selector: 'app-chef-crear',
   templateUrl: './chef-crear.component.html',
@@ -16,7 +18,8 @@ export class ChefCrearComponent implements OnInit {
     private chef$: ChefService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private _location: Location
   ){
     this.usuarioForm = new FormGroup('')
   }
@@ -33,7 +36,7 @@ export class ChefCrearComponent implements OnInit {
   registrarChef(){
     this.chef$.registro(this.usuarioForm.get('usuario')?.value, this.usuarioForm.get('password')?.value, this.usuarioForm.get('nombre')?.value)
     .subscribe(res => {
-      this.router.navigate([`/chefs`])
+      this._location.back();
     },
       error => {
         this.toastrService.error("Error en el registro. Verifique que el usuario no se encuentre ya registrado", "Error", {closeButton: true});

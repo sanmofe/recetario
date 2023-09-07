@@ -29,5 +29,14 @@ export class ChefService {
     })
     return this.http.get<Usuario[]>(`${this.apiUrl}/chefs/${idUsuario}`, { headers: headers })
   }
+
+  darChefsRestaurante(idRestaurante): Observable<Usuario[]> {
+    const idUsuario = sessionStorage.getItem('idUsuario');
+    console.log("Id Usuario: " + idUsuario)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+    })
+    return this.http.get<Usuario[]>(`${this.apiUrl}/restaurante/${idRestaurante}/empleados`, { headers: headers })
+  }
     
 }
