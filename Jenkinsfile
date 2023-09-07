@@ -20,7 +20,7 @@ pipeline {
                     docker.image('gitinspector-isis2603').inside('--entrypoint=""') {
                         sh '''
                             mkdir -p ./reports/
-                            gitinspector --file-types="py" --format=html --AxU -w -T -x author:Bocanegra -x author:estudiante > ./reports/index.html
+                            gitinspector --file-types="ts,css,html" --format=html --AxU -w -T -x author:Bocanegra -x author:estudiante > ./reports/index.html
                         '''
                     }
                 }
