@@ -12,7 +12,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let restaurante of restaurantes">
-            <td>{{restaurante.nombre}}</td>
+            <td (click)="verEmpleados(restaurante.id)">{{restaurante.nombre}}</td>
             <td>
               <button [disabled]="true" type="button" class="btn btn-primary" (click)="editarRestaurante(restaurante.id)"><i class="bi bi-pencil"></i></button>&nbsp;
               <button [disabled]="true" type="button" class="btn btn-danger" (click)="borrarRestaurante(restaurante.id)"><i class="bi bi-trash"></i></button>&nbsp;

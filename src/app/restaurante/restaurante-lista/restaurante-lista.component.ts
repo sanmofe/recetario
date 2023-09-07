@@ -47,6 +47,10 @@ export class RestauranteListaComponent implements OnInit {
     this.routerPath.navigate(['/restaurante/editar/' + idRestaurante]);
   }
 
+  verEmpleados(idRestaurante: number):void {
+    this.routerPath.navigate(['/restaurante/' + idRestaurante + '/empleados']);
+  }
+
   borrarRestaurante(idRestaurante: number):void {
     this.restauranteService.borrarRestaurante(idRestaurante).subscribe((restaurante) => {
       this.toastr.success("Confirmation", "Registro eliminado de la lista")

@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'ingredientes', component: IngredienteListaComponent, pathMatch: 'full'},
   { path: 'ingrediente/crear', component: IngredienteCrearComponent, pathMatch: 'full'},
   { path: 'ingrediente/editar/:id', component: IngredienteEditarComponent, pathMatch: 'full'},
-  { path: 'chefs', component: ChefListaComponent, pathMatch: 'full' },
+  { path: 'restaurante/:id/empleados', component: ChefListaComponent, pathMatch: 'full' },
   { path: 'chef/crear', component: ChefCrearComponent, pathMatch:'full'},
 ];
 
