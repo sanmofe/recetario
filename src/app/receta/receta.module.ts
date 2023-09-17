@@ -6,12 +6,14 @@ import { RecetaListaComponent } from './receta-lista/receta-lista.component';
 import { RecetaDetalleComponent } from './receta-detalle/receta-detalle.component';
 import { RecetaCrearComponent } from './receta-crear/receta-crear.component';
 import { RecetaEditarComponent } from './receta-editar/receta-editar.component';
+import { EncabezadoRestaurante } from '../encabezado-restaurante/encabezado-restaurante.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    EncabezadoAppModule
+    EncabezadoAppModule,
+    EncabezadoRestaurante
   ],
   declarations: [
     RecetaListaComponent,
