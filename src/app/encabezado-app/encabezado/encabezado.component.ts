@@ -19,8 +19,8 @@ export class EncabezadoComponent implements OnInit {
     })
         
     this.http.get<{ user_type: string }>(`${this.apiUrl}/api/user-type`, { headers: headers }).subscribe(data => {
-
       this.user_type = data.user_type;
+      
     });
 
 
