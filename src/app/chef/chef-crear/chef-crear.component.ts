@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
 import { ChefService } from '../chef.service';
 import {Location} from '@angular/common';
 
@@ -14,17 +15,21 @@ export class ChefCrearComponent implements OnInit {
 
   usuarioForm: FormGroup;
 
+  restauranteId: string;
+
   constructor(
     private chef$: ChefService,
     private formBuilder: FormBuilder,
     private router: Router,
     private toastrService: ToastrService,
-    private _location: Location
+    private _location: Location,
+    private route: ActivatedRoute
   ){
     this.usuarioForm = new FormGroup('')
   }
 
   ngOnInit() {
+    this.restauranteId = this.route.snapshot.paramMap.get('id');
     this.usuarioForm = this.formBuilder.group({
       nombre: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
       usuario: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
@@ -34,7 +39,7 @@ export class ChefCrearComponent implements OnInit {
   }
 
   registrarChef(){
-    this.chef$.registro(this.usuarioForm.get('usuario')?.value, this.usuarioForm.get('password')?.value, this.usuarioForm.get('nombre')?.value)
+    this.chef$.registro(this.usuarioForm.get('usuario')?.value, this.usuarioForm.get('password')?.value, this.usuarioForm.get('nombre')?.value, this.restauranteId)
     .subscribe(res => {
       this._location.back();
     },
