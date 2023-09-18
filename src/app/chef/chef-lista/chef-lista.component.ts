@@ -18,7 +18,7 @@ export class ChefListaComponent implements OnInit  {
     private router: ActivatedRoute,
     private toastr: ToastrService,
     private chef$: ChefService
-  ){}
+    ){}
 
   ngOnInit(): void {
     this.chef$.darChefsRestaurante(this.idRestaurante).subscribe((chefs) => {
@@ -27,7 +27,7 @@ export class ChefListaComponent implements OnInit  {
   }
 
   crearChef(){ 
-    this.routerPath.navigate(['/chef/crear/']);
+    this.routerPath.navigate(['/restaurante/' + this.idRestaurante + '/chefs/crear']);
   }
 
   editarChef(id){

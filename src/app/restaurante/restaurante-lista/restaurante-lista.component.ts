@@ -48,7 +48,7 @@ export class RestauranteListaComponent implements OnInit {
   }
 
   verEmpleados(idRestaurante: number):void {
-    this.routerPath.navigate(['/restaurante/' + idRestaurante + '/empleados']);
+    this.routerPath.navigate(['/restaurante/' + idRestaurante + '/chefs']);
   }
 
   borrarRestaurante(idRestaurante: number):void {
