@@ -5,15 +5,13 @@ import { EncabezadoAppModule } from '../encabezado-app/encabezado-app.module';
 import { IngredienteListaComponent } from './ingrediente-lista/ingrediente-lista.component';
 import { IngredienteCrearComponent } from './ingrediente-crear/ingrediente-crear.component';
 import { IngredienteEditarComponent } from './ingrediente-editar/ingrediente-editar.component';
-import { EncabezadoRestaurante } from '../encabezado-restaurante/encabezado-restaurante.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    EncabezadoAppModule,
-    EncabezadoRestaurante
-  ],
+    EncabezadoAppModule
+    ],
   declarations: [
     IngredienteListaComponent,
     IngredienteCrearComponent,
