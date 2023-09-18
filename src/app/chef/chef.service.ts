@@ -19,7 +19,7 @@ export class ChefService {
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     })
     const idUsuario = sessionStorage.getItem('idUsuario');
-    return this.http.post<any>(`${this.apiUrl}/chefs/${idUsuario}`, { "usuario": usuario, "contrasena": contrasena, "nombre": nombre }, {headers: head})  }
+    return this.http.post<any>(`${this.apiUrl}/chefs/${idUsuario}`, { "usuario": usuario, "contrasena": contrasena, "nombre": nombre, "restaurante": restaurante }, {headers: head})  }
 
   darChefs(): Observable<Usuario[]> {
     const idUsuario = sessionStorage.getItem('idUsuario');
