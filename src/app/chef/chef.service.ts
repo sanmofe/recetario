@@ -14,7 +14,7 @@ export class ChefService {
 
   constructor(private http: HttpClient) { }
   
-  registro(usuario: string, contrasena: string, nombre: string): Observable<any> {
+  registro(usuario: string, contrasena: string, nombre: string, restaurante: string): Observable<any> {
     const head = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     })

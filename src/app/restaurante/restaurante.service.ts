@@ -20,7 +20,8 @@ export class RestauranteService {
   darRestaurantes(): Observable<Restaurante[]> {
     const idUsuario = sessionStorage.getItem('idUsuario');
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
+      "Access-Control-Allow-Origin": "*"
     })
     return this.http.get<Restaurante[]>(`${this.apiUrl}/restaurantes/${idUsuario}`, { headers: headers })
   }
