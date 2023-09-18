@@ -1,4 +1,3 @@
-// HU: REC-4 y REC-6
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
@@ -8,7 +7,7 @@ import { Restaurante } from '../restaurante/restaurante';
 @Injectable({
   providedIn: 'root'
 })
-export class EncabezadoRestauranteService {
+export class EncabezadoAppService {
 
   private apiUrl = environment.apiUrl;
 
