@@ -6,10 +6,11 @@ import { Menu } from './menu';
 
 @Injectable({
   providedIn: 'root'
-}) export class MenuService {
+}) 
+export class MenuService {
 
   private apiUrl = environment.apiUrl;
-   existe:boolean;
+  existe:boolean;
 
   constructor(
     private http: HttpClient
@@ -17,11 +18,18 @@ import { Menu } from './menu';
 
   darMenus(): Observable<Menu[]> {
     const idUsuario = sessionStorage.getItem('idUsuario');
+    const rol = sessionStorage.getItem('rol');
+    const idParent = sessionStorage.getItem('idParent');
+    var idAdminChef = idUsuario
+    if (rol == "CHEF") {
+      idAdminChef = idParent
+    }
+    
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
       "Access-Control-Allow-Origin": "*"
     })
-    return this.http.get<Menu[]>(`${this.apiUrl}/menus/${idUsuario}`, { headers: headers })
+    return this.http.get<Menu[]>(`${this.apiUrl}/${rol.toLowerCase()}/menus/${idAdminChef}`, { headers: headers })
   }
 
   darMenu(idMenu: number): Observable<Menu> {
