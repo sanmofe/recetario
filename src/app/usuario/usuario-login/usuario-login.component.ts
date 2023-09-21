@@ -36,6 +36,7 @@ export class UsuarioLoginComponent implements OnInit {
         sessionStorage.setItem('token', res.token);
         sessionStorage.setItem('idUsuario', res.id);
         sessionStorage.setItem('restaurante', res.restaurante);
+        sessionStorage.setItem('username', res.username);
         this.toastrService.success("Login ok", "Información", {closeButton: true});
         this.router.navigate([`/recetas`])
       },

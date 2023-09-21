@@ -32,6 +32,7 @@ export class EncabezadoComponent implements OnInit {
       
   this.http.get<{ user_type: string }>(`${this.apiUrl}/api/user-type`, { headers: headers }).subscribe(data => {
     this.user_type = data.user_type;
+    sessionStorage.setItem('rol', this.user_type);
     console.log(this.user_type)
 
     if (this.user_type == "CHEF"){
