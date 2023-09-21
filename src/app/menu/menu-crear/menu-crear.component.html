@@ -1,0 +1,136 @@
+<app-encabezado></app-encabezado>
+<h3>Nuevo Menú!</h3>
+
+<form [formGroup]="menuForm" (ngSubmit)="!menuForm.invalid && crearMenu(menuForm.value)">
+  
+    <div class="row">
+
+        <div class="col col-6">
+
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="nombre">Nombre</label>
+                <input
+                    novalidate
+                    id="nombre"
+                    class="form-control"
+                    formControlName="nombre"
+                    placeholder="Nombre"
+                />
+                <div
+                    class="alert alert-danger alert-dismissible fade show"
+                    *ngIf="
+                    menuForm.get('nombre')!.hasError('required') &&
+                    menuForm.get('nombre')!.touched
+                    "
+                >
+                    Contenido requerido
+                </div>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="fechaInicio">Fecha Inicio</label>
+                <input
+                type="date"
+                novalidate
+                  id="fechaInicio"
+                  [min]="minFechaInicio"
+                  [(ngModel)] = fechaInicio
+                  (ngModelChange) = "cambioFecha()"
+                  class="form-control"
+                  formControlName="fechaInicio"
+                  placeholder="(YYYY-MM-DD)"
+                />
+                <div
+                  class="alert alert-danger alert-dismissible fade show"
+                  *ngIf="
+                  menuForm.get('fechaInicio')!.hasError('required') &&
+                  menuForm.get('fechaInicio')!.touched
+                  "
+                >
+                  Contenido requerido
+                </div>
+                <div class="alert alert-danger my-3" *ngIf="menuForm.get('fechaInicio')?.hasError('maxlength')">
+                  La fecha no puede exceder el numero de caracteres.
+                </div>
+              </div>
+
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="fechaFin">Fecha Fin</label>
+                    <input
+                    type="date"
+                    novalidate
+                    id="fechaFin"
+                    [min] = "maxFechaFin"
+                    [max] = "maxFechaFin"
+                    class="form-control"
+                    formControlName="fechaFin"
+                    placeholder="(dd-MM-YYYY)"
+                    />
+                    <div
+                    class="alert alert-danger alert-dismissible fade show"
+                    *ngIf="
+                    menuForm.get('fechaFin')!.hasError('required') &&
+                    menuForm.get('fechaFin')!.touched
+                    "
+                    >
+                    Contenido requerido
+                    </div>
+                    <div class="alert alert-danger my-3" *ngIf="menuForm.get('fechaInicio')?.hasError('maxlength')">
+                    La fecha no puede exceder el numero de caracteres.
+                    </div>
+                </div>
+
+
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="autor">Autor</label>
+                    <input
+                    novalidate
+                    id="autor"
+                    class="form-control"
+                    formControlName="autor"
+                    placeholder="Nombre del Autor"
+                    />
+                    <div
+                    class="alert alert-danger alert-dismissible fade show"
+                    *ngIf="
+                    menuForm.get('autor')!.hasError('required') &&
+                    menuForm.get('autor')!.touched
+                    "
+                    >
+                    Contenido requerido
+                    </div>
+                    <div class="alert alert-danger my-3" *ngIf="menuForm.get('autor')?.hasError('maxlength')">
+                    El Nombre del autor no debe exceder los 200 caracteres
+                    </div>
+                </div>
+
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="descripcion">Descripción</label>
+                    <textarea
+                      novalidate
+                      id="descripcion"
+                      class="form-control"
+                      formControlName="descripcion"
+                      placeholder="Agrega una descripción"
+                      rows="3"
+                     ></textarea>
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                      menuForm.get('autor')!.hasError('required') &&
+                      menuForm.get('autor')!.touched
+                      "
+                    >
+                      Contenido requerido
+                    </div>
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="menuForm.get('descripcion')!.hasError('minlength')"
+                    >
+                      La descripción es muy corta.
+                    </div>
+                  </div>
+        </div>
+   </div>
+   <button type="submit" class="btn btn-primary" [disabled]="!menuForm.valid">Crear</button>&nbsp;
+   <button type="button" class="btn btn-danger ml-3" (click)="cancelarMenu()">Cancelar</button>
+</form>
