@@ -164,7 +164,7 @@
                         *ngFor="let receta of listaRecetas"
                         [ngValue]="receta.id"
                       >
-                        {{ receta.nombre }} ({{ receta.unidad }})
+                        {{ receta.nombre }}
                       </option>
                     </select>
                     <div
@@ -180,18 +180,18 @@
                   <div class="col col-3">
                     <input
                       novalidate
-                      id="numPersonas"
+                      id="num_personas"
                       type="number"
                       class="form-control"
-                      formControlName="numPersonas"
+                      formControlName="num_personas"
                       placeholder="Numero de personas"
                       [min]="0"
                     />
                     <div
                       class="alert alert-danger alert-dismissible fade show"
                       *ngIf="
-                        lineaForm.get('numPersonas')!.hasError('required') &&
-                        lineaForm.get('numPersonas')!.touched
+                        lineaForm.get('num_personas')!.hasError('required') &&
+                        lineaForm.get('num_personas')!.touched
                       "
                     >
                       Contenido requerido

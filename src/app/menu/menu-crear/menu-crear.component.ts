@@ -43,7 +43,7 @@ import { Receta } from 'src/app/receta/receta';
             this.recetasSubForm = this.formBuilder.array([
                 this.formBuilder.group({
                   id:[""],
-                  numPersonas: ["", Validators.required],
+                  num_personas: ["", Validators.required],
                   idReceta: ["", Validators.required]
                   })
               ])
@@ -182,7 +182,7 @@ import { Receta } from 'src/app/receta/receta';
           adicionarReceta(): void {
             const filaNueva = this.formBuilder.group({
               id:[""],
-              numPersonas: ["", Validators.required],
+              num_personas: ["", Validators.required],
               idReceta: ["", Validators.required]
               })
       
