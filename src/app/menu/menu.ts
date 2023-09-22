@@ -1,3 +1,5 @@
+import { MenuReceta } from "../menu-receta/menu-receta";
+
 export class Menu {
   id: number;
   nombre: string;
@@ -5,6 +7,7 @@ export class Menu {
   fechaFin: Date;
   autor: string;
   descripcion: string;
+  recetas: Array<MenuReceta>;
 
   public constructor(
     id: number,
@@ -20,5 +23,6 @@ export class Menu {
     this.fechaFin = fechaFin;
     this.autor = autor;
     this.descripcion = descripcion;
+    this.recetas = [];
   }
 }

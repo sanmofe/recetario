@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Menu } from '../menu';
 import { MenuService } from '../menu.service';
 import { DatePipe } from '@angular/common';
+import { RecetaService } from 'src/app/receta/receta.service';
+import { Receta } from 'src/app/receta/receta';
 
 
 @Component({
@@ -14,6 +16,9 @@ import { DatePipe } from '@angular/common';
 })
     export class MenuCrearComponent implements OnInit {
         menuForm: FormGroup;
+        recetasSubForm: FormArray;
+        listaRecetas: any;
+
         autor: string = sessionStorage.getItem("username");
         ahora: any;
         deshabilitar:any;
@@ -27,11 +32,22 @@ import { DatePipe } from '@angular/common';
             private formBuilder: FormBuilder,
             private routerPath: Router,
             private toastr: ToastrService,
-            private menuService: MenuService
+            private menuService: MenuService,
+            private recetaService: RecetaService,
         ) { }
 
         ngOnInit(): void {
             //this.minFechaInicio = this.obtenerLunesActual();
+
+
+            this.recetasSubForm = this.formBuilder.array([
+                this.formBuilder.group({
+                  id:[""],
+                  num_personas: ["", Validators.required],
+                  idReceta: ["", Validators.required]
+                  })
+              ])
+
             this.minFechaInicio = this.obtenerLunesActual();
             this.maxFechaInicio = this.minFechaInicio;
             this.minFechaFin = this.obtenerViernesDeMismaSemana(this.minFechaInicio);
@@ -42,6 +58,7 @@ import { DatePipe } from '@angular/common';
                 fechaFin: [this.obtenerViernesActual(), [Validators.required]],
                 autor: [sessionStorage['username'], [Validators.required, Validators.maxLength(200)]],
                 descripcion: ["", [Validators.required, Validators.minLength(2)]],
+                recetas: this.recetasSubForm,
             });
             const datePipe = new DatePipe('en-US');
             this.ahora = datePipe.transform(new Date(), 'dd/M/yyyy');
@@ -51,6 +68,10 @@ import { DatePipe } from '@angular/common';
                 this.maxFechaFin = this.obtenerViernesDeMismaSemana(fechaInicio);
                 this.menuForm.get('fechaFin').setValue(this.maxFechaFin);
               });
+
+            this.recetaService.darRecetas().subscribe((recetas) => {
+            this.listaRecetas = recetas
+            });
         }
 
         cambioFecha(){
@@ -156,6 +177,20 @@ import { DatePipe } from '@angular/common';
             const fechaViernesFormateada = fechaViernes.toISOString().split('T')[0];
           
             return fechaViernesFormateada;
+          }
+
+          adicionarReceta(): void {
+            const filaNueva = this.formBuilder.group({
+              id:[""],
+              num_personas: ["", Validators.required],
+              idReceta: ["", Validators.required]
+              })
+      
+              this.recetasSubForm.push(filaNueva)
+          }
+
+          eliminarReceta(index: number): void {
+            this.recetasSubForm.removeAt(index);
           }
 
     }
