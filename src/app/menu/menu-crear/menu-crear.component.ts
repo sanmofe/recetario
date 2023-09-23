@@ -81,7 +81,6 @@ import { Receta } from 'src/app/receta/receta';
         crearMenu(nuevoMenu: Menu): void {
             this.menuService.crearMenu(nuevoMenu).subscribe((menu) => {
                 this.toastr.success("Confirmation", "Registro creado")
-                this.toastr.warning("Warning", "Por favor agregue las recetas al menú.")
                 this.menuForm.reset();
                 this.routerPath.navigate(['/menus/']);
             },
