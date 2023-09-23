@@ -83,7 +83,7 @@ import { Receta } from 'src/app/receta/receta';
                 this.toastr.success("Confirmation", "Registro creado")
                 this.toastr.warning("Warning", "Por favor agregue las recetas al menú.")
                 this.menuForm.reset();
-                this.routerPath.navigate(['/recetas/']);
+                this.routerPath.navigate(['/menus/']);
             },
                 error => {
                     if (error.statusText === "UNAUTHORIZED") {

@@ -16,10 +16,19 @@ export class IngredienteService {
   ) { }
 
   darIngredientes(): Observable<Ingrediente[]> {
+    const idUsuario = sessionStorage.getItem('idUsuario');
+    const rol = sessionStorage.getItem('rol');
+    const idParent = sessionStorage.getItem('idParent');
+    let idConsulta = idUsuario;
+
+    if (rol == "CHEF") {
+      idConsulta = idParent;
+    }
+
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     })
-    return this.http.get<Ingrediente[]>(`${this.apiUrl}/ingredientes`, { headers: headers })
+    return this.http.get<Ingrediente[]>(`${this.apiUrl}/${rol.toLowerCase()}/ingredientes/${idConsulta}`, { headers: headers })
   }
 
   darIngrediente(id: number): Observable<Ingrediente> {
@@ -30,10 +39,19 @@ export class IngredienteService {
   }
 
   crearIngrediente(ingrediente: Ingrediente): Observable<Ingrediente> {
+    
+    const idUsuario = sessionStorage.getItem('idUsuario');
+    const rol = sessionStorage.getItem('rol');
+    const idParent = sessionStorage.getItem('idParent');
+    let idConsulta = idUsuario;
+
+    if (rol == "CHEF") {
+      idConsulta = idParent;
+    }
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     })
-    return this.http.post<Ingrediente>(`${this.apiUrl}/ingredientes`, ingrediente, { headers: headers })
+    return this.http.post<Ingrediente>(`${this.apiUrl}/${rol.toLowerCase()}/ingredientes/${idConsulta}`, ingrediente, { headers: headers })
   }
 
   editarIngrediente(ingrediente: Ingrediente): Observable<Ingrediente> {

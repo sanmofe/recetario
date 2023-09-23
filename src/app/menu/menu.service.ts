@@ -45,7 +45,12 @@ export class MenuService {
 
     const idUsuario = sessionStorage.getItem('idUsuario');
     const rol = sessionStorage.getItem('rol');
-    console.log(rol);
+    const idParent = sessionStorage.getItem('idParent');
+    let idConsulta = idUsuario;
+
+    if (rol == "CHEF") {
+      idConsulta = idParent;
+    }
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
       "Access-Control-Allow-Origin": "*"
@@ -53,7 +58,7 @@ export class MenuService {
 
     
 
-    return this.http.post<Menu>(`${this.apiUrl}/${rol.toLowerCase()}/menus/${idUsuario}`, menu, { headers: headers })
+    return this.http.post<Menu>(`${this.apiUrl}/${rol.toLowerCase()}/menus/${idConsulta}`, menu, { headers: headers })
   }
 
   borrarMenu(idMenu: number): Observable<Menu> {
