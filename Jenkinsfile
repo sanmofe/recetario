@@ -11,7 +11,7 @@ pipeline {
                 scmSkip(deleteBuild: true, skipPattern:'.*\\[ci-skip\\].*')
                 git branch: 'main',  
                 credentialsId: env.GITHUB_TOKEN_ID,
-                url: 'https://github.com/MISW-4101-Practicas/' + env.GIT_REPO
+                url: 'https://github.com/MISW-4201-ProcesosDesarrolloAgil/' + env.GIT_REPO
             }
         }
         stage('Gitinspector') {
@@ -20,7 +20,7 @@ pipeline {
                     docker.image('gitinspector-isis2603').inside('--entrypoint=""') {
                         sh '''
                             mkdir -p ./reports/
-                            gitinspector --file-types="py" --format=html --AxU -w -T -x author:Bocanegra -x author:estudiante > ./reports/index.html
+                            gitinspector --file-types="ts,css,html" --format=html --AxU -w -T -x author:Bocanegra -x author:estudiante > ./reports/index.html
                         '''
                     }
                 }
@@ -29,16 +29,19 @@ pipeline {
                     sh('git config --global user.name "ci-isis2603"')
                     sh('git add ./reports/index.html')
                     sh('git commit -m "[ci-skip] GitInspector report added"')
-                    sh('git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/MISW-4101-Practicas/${GIT_REPO} main')
-                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/MISW-4101-Practicas/${GIT_REPO} main')
+                    sh('git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/MISW-4201-ProcesosDesarrolloAgil/${GIT_REPO} main')
+                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/MISW-4201-ProcesosDesarrolloAgil/${GIT_REPO} main')
                 }  
             }
         }
     }
-    post { 
-      always { 
-         // Clean workspace
-         cleanWs deleteDirs: true
-      }
+    post {
+       always {
+         cleanWs()
+         deleteDir() 
+         dir("${env.GIT_REPO}@tmp") {
+           deleteDir()
+         }
+       }
    }
 }
