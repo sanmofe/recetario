@@ -16,11 +16,13 @@
       <li class="nav-item">
         <a class="nav-link" href="/ingredientes">Ingredientes</a> 
       </li>
-      
+      <li class="nav-item">
+        <a class="nav-link" href="/menus">Menús</a> 
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="/">Salir</a>
       </li>
     </ul>
   </div>
-</nav>
+  <div *ngIf="user_type==='CHEF'" style="padding-right:3%;"> <h1 *ngIf="restaurante" style="font-size:130%;">Restaurante <b style="font-size:110%;">{{restaurante.nombre}}</b></h1></div></nav>
 <br/>

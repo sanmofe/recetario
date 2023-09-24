@@ -24,6 +24,8 @@ export class UsuarioLoginComponent implements OnInit {
     sessionStorage.setItem('decodedToken', '');
     sessionStorage.setItem('token', '');
     sessionStorage.setItem('idUsuario', '');
+    sessionStorage.setItem('restaurante', '');
+    sessionStorage.setItem('idParent', '');
   }
 
   loginUsuario(usuario: string, contrasena: string) {
@@ -34,6 +36,9 @@ export class UsuarioLoginComponent implements OnInit {
         sessionStorage.setItem('decodedToken', this.helper.decodeToken(res.token));
         sessionStorage.setItem('token', res.token);
         sessionStorage.setItem('idUsuario', res.id);
+        sessionStorage.setItem('restaurante', res.restaurante);
+        sessionStorage.setItem('username', res.username);
+        sessionStorage.setItem('idParent', res.idParent);
         this.toastrService.success("Login ok", "Información", {closeButton: true});
         this.router.navigate([`/recetas`])
       },

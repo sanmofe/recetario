@@ -11,7 +11,7 @@ import { IngredienteEditarComponent } from './ingrediente-editar/ingrediente-edi
     CommonModule,
     ReactiveFormsModule,
     EncabezadoAppModule
-  ],
+    ],
   declarations: [
     IngredienteListaComponent,
     IngredienteCrearComponent,

@@ -1,0 +1,32 @@
+<app-encabezado></app-encabezado>
+
+<div class="row">
+  <div class="col col-6">
+    <div class="card" style="width: 100%;">
+      <div class="card-header">
+        Mis menús <button type="button" class="btn btn-warning" (click)="crearMenu()"><i class="bi bi-plus-circle"></i></button>
+      </div>
+      <table class="table" border="1">
+        <thead>
+          <th>Nombre</th>
+          <th>Fecha inicial</th>
+          <th>Fecha final</th>
+          <th *ngIf="user_type==='ADMIN'">Chef</th>
+          <th>Acciones</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let menu of menus">
+            <td>{{menu.nombre}}</td>
+            <td style="text-align: center;">{{menu.fechaInicio | date:'dd-MM-yyyy'}}</td>
+            <td style="text-align: center;">{{menu.fechaFin | date:'dd-MM-yyyy'}}</td>
+            <td style="text-align: center;" *ngIf="user_type==='ADMIN'">{{menu.autor}}</td>
+            <td>
+              <button [disabled]="true" type="button" class="btn btn-primary" (click)="editarMenu(menu.id)"><i class="bi bi-pencil"></i></button>&nbsp;
+              <button [disabled]="true" type="button" class="btn btn-danger" (click)="borrarMenu(menu.id)"><i class="bi bi-trash"></i></button>&nbsp;
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

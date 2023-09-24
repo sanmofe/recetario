@@ -1,11 +1,10 @@
 <app-encabezado></app-encabezado>
-<h3>
-  Nueva receta
-</h3>
+
+<h3>Nueva receta</h3>
 
 <form
- [formGroup]="recetaForm"
- (ngSubmit)="!recetaForm.invalid && crearReceta(recetaForm.value)"
+  [formGroup]="recetaForm"
+  (ngSubmit)="!recetaForm.invalid && crearReceta(recetaForm.value)"
 >
   <div class="row">
     <div class="col col-">
@@ -90,7 +89,7 @@
           formControlName="preparacion"
           placeholder="Preparación"
           rows="8"
-         ></textarea>
+        ></textarea>
         <div
           class="alert alert-danger alert-dismissible fade show"
           *ngIf="
@@ -112,70 +111,97 @@
       <!-- Ingredientes -->
       <div class="form-group mx-sm-3 mb-2">
         <h6>Ingredientes</h6>
+        <div class="row">
           <div class="row">
-            <div class="row">
-              <div class="col col-7">Ingrediente</div>
-              <div class="col col-4">Cantidad</div>
-              <div class="col col-1"></div>
-            </div>
-            <ng-container formArrayName="ingredientes">
-              <ng-container *ngFor="let lineaForm of ingredientesSubForm.controls; let index = index">
-                <div [formGroupName]="index">
-                  <div class="row">
-                    <div class="col col-7">
-                      <select
+            <div class="col col-7">Ingrediente</div>
+            <div class="col col-4">Cantidad</div>
+            <div class="col col-1"></div>
+          </div>
+          <ng-container formArrayName="ingredientes">
+            <ng-container
+              *ngFor="
+                let lineaForm of ingredientesSubForm.controls;
+                let index = index
+              "
+            >
+              <div [formGroupName]="index">
+                <div class="row">
+                  <div class="col col-7">
+                    <select
                       formControlName="idIngrediente"
                       class="form-control"
+                    >
+                      <option [ngValue]="null" disabled>
+                        Elegir ingrediente
+                      </option>
+                      <option
+                        *ngFor="let ingrediente of listaIngredientes"
+                        [ngValue]="ingrediente.id"
                       >
-                      <option [ngValue]="null" disabled>Elegir ingrediente</option>
-                      <option *ngFor="let ingrediente of listaIngredientes" [ngValue]="ingrediente.id">{{ingrediente.nombre}} ({{ingrediente.unidad}})</option>
-                      </select>
-                      <div
+                        {{ ingrediente.nombre }} ({{ ingrediente.unidad }})
+                      </option>
+                    </select>
+                    <div
                       class="alert alert-danger alert-dismissible fade show"
                       *ngIf="
                         lineaForm.get('idIngrediente')!.hasError('required') &&
                         lineaForm.get('idIngrediente')!.touched
                       "
-                      >
+                    >
                       Contenido requerido
-                      </div>
                     </div>
-                    <div class="col col-4">
-                      <input
+                  </div>
+                  <div class="col col-4">
+                    <input
                       novalidate
                       id="cantidad"
                       type="number"
                       class="form-control"
                       formControlName="cantidad"
                       placeholder="Cantidad"
-                      />
-                      <div
-                        class="alert alert-danger alert-dismissible fade show"
-                        *ngIf="
-                          lineaForm.get('cantidad')!.hasError('required') &&
-                          lineaForm.get('cantidad')!.touched
-                        "
-                      >
-                        Contenido requerido
-                      </div>
-                    </div>
-                    <div class="col col-1">
-                      <button type="button" class="btn btn-danger ml-3" (click)="eliminarIngrediente(index)"><i class="bi bi-trash"></i></button>
+                    />
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      *ngIf="
+                        lineaForm.get('cantidad')!.hasError('required') &&
+                        lineaForm.get('cantidad')!.touched
+                      "
+                    >
+                      Contenido requerido
                     </div>
                   </div>
+                  <div class="col col-1">
+                    <button
+                      type="button"
+                      class="btn btn-danger ml-3"
+                      (click)="eliminarIngrediente(index)"
+                    >
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </div>
                 </div>
-              </ng-container>
+              </div>
             </ng-container>
-          </div>
-          <br/>
-          <div class="row">
-            <button type="button" class="btn btn-info ml-3" (click)="adicionarIngrediente()"><i class="bi bi-plus-circle"></i></button>
-
-          </div>
+          </ng-container>
+        </div>
+        <br />
+        <div class="row">
+          <button
+            type="button"
+            class="btn btn-info ml-3"
+            (click)="adicionarIngrediente()"
+          >
+            <i class="bi bi-plus-circle"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
   <br />
-  <button type="submit" class="btn btn-primary" [disabled]="!recetaForm.valid">Crear</button>&nbsp;
-  <button type="button" class="btn btn-danger ml-3" (click)="cancelarReceta()">Cancelar</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!recetaForm.valid">
+    Crear</button
+  >&nbsp;
+  <button type="button" class="btn btn-danger ml-3" (click)="cancelarReceta()">
+    Cancelar
+  </button>
 </form>

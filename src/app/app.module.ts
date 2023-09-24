@@ -14,6 +14,8 @@ import { RestauranteModule } from './restaurante/restaurante.module';
 import { IngredienteModule } from './ingrediente/ingrediente.module';
 import { RecetaIngredienteModule } from './receta-ingrediente/receta-ingrediente.module';
 import { ChefModule } from './chef/chef.module';
+import { MenuModule } from './menu/menu.module';
+import { MenuRecetaModule } from './menu-receta/menu-receta.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { ChefModule } from './chef/chef.module';
     IngredienteModule,
     RecetaIngredienteModule,
     ChefModule,
+    MenuModule,
+    MenuRecetaModule,
     ToastrModule.forRoot({
       timeOut: 7000,
       positionClass: 'toast-bottom-right',

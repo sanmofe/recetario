@@ -16,6 +16,8 @@ import { IngredienteCrearComponent } from './ingrediente/ingrediente-crear/ingre
 import { IngredienteEditarComponent } from './ingrediente/ingrediente-editar/ingrediente-editar.component';
 import { ChefListaComponent } from './chef/chef-lista/chef-lista.component';
 import { ChefCrearComponent } from './chef/chef-crear/chef-crear.component';
+import { MenuCrearComponent } from './menu/menu-crear/menu-crear.component';
+import { MenuListaComponent } from './menu/menu-lista/menu-lista.component';
 
 const routes: Routes = [
   { path: '', component: UsuarioLoginComponent, pathMatch: 'full' },
@@ -31,8 +33,10 @@ const routes: Routes = [
   { path: 'ingredientes', component: IngredienteListaComponent, pathMatch: 'full'},
   { path: 'ingrediente/crear', component: IngredienteCrearComponent, pathMatch: 'full'},
   { path: 'ingrediente/editar/:id', component: IngredienteEditarComponent, pathMatch: 'full'},
-  { path: 'restaurante/:id/empleados', component: ChefListaComponent, pathMatch: 'full' },
-  { path: 'chef/crear', component: ChefCrearComponent, pathMatch:'full'},
+  { path: 'restaurante/:id/chefs', component: ChefListaComponent, pathMatch: 'full' },
+  { path: 'restaurante/:id/chefs/crear', component: ChefCrearComponent, pathMatch:'full'},
+  { path: ':rol/menus/:id', component: MenuCrearComponent, pathMatch: 'full' },
+  { path: 'menus', component: MenuListaComponent, pathMatch: 'full'}
 ];
 
 @NgModule({

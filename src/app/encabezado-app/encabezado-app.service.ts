@@ -1,14 +1,13 @@
-// HU: REC-4 y REC-6
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment'
-import { Restaurante } from './restaurante';
+import { Restaurante } from '../restaurante/restaurante';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RestauranteService {
+export class EncabezadoAppService {
 
   private apiUrl = environment.apiUrl;
 
@@ -20,8 +19,7 @@ export class RestauranteService {
   darRestaurantes(): Observable<Restaurante[]> {
     const idUsuario = sessionStorage.getItem('idUsuario');
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
-      "Access-Control-Allow-Origin": "*"
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
     })
     return this.http.get<Restaurante[]>(`${this.apiUrl}/restaurantes/${idUsuario}`, { headers: headers })
   }
