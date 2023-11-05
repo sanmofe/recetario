@@ -38,7 +38,6 @@ export class ChefCrearComponent implements OnInit {
     });
   }
 
-  //Este método hace cosas B)
   registrarChef(){
     this.chef$.registro(this.usuarioForm.get('usuario')?.value, this.usuarioForm.get('password')?.value, this.usuarioForm.get('nombre')?.value, this.restauranteId)
     .subscribe(res => {
