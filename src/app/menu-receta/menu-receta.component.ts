@@ -9,7 +9,5 @@ export class MenuRecetaComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
 
 }

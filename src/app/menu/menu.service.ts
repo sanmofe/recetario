@@ -20,7 +20,7 @@ export class MenuService {
     const idUsuario = sessionStorage.getItem('idUsuario');
     const rol = sessionStorage.getItem('rol');
     const idParent = sessionStorage.getItem('idParent');
-    var idAdminChef = idUsuario
+    let idAdminChef = idUsuario
     if (rol == "CHEF") {
       idAdminChef = idParent
     }
