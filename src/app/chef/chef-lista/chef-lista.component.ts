@@ -30,9 +30,6 @@ export class ChefListaComponent implements OnInit  {
     this.routerPath.navigate(['/restaurante/' + this.idRestaurante + '/chefs/crear']);
   }
 
-  editarChef(id){
-  }
-
   borrarChef(id){
   }
 
