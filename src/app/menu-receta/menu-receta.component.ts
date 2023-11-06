@@ -5,9 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './menu-receta.component.html',
   styleUrls: ['./menu-receta.component.css']
 })
-export class MenuRecetaComponent implements OnInit {
-
-  ngOnInit() {
-  }
+export class MenuRecetaComponent  {
 
 }
