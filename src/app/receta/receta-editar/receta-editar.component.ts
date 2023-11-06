@@ -44,7 +44,7 @@ export class RecetaEditarComponent implements OnInit {
         this.ingredientesSubForm = this.formBuilder.array([])
 
         //Primero diligencio la sub forma para no tener problemas con el bind
-        for(var recetaIngrediente of this.receta.ingredientes) {
+        for(let recetaIngrediente of this.receta.ingredientes) {
           this.adicionarElemento(recetaIngrediente.id, recetaIngrediente.ingrediente.id, recetaIngrediente.cantidad)
         }
 
