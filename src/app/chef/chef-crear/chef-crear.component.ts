@@ -48,8 +48,4 @@ export class ChefCrearComponent implements OnInit {
       })
   }
 
-  cancelarRegistro(){
-
-  }
-
 }
